@@ -3,10 +3,10 @@ import{ Link } from 'react-router-dom'
 import styled from 'styled-components';
 
 const Recipes = ({ recipes }) => {
-  console.log(recipes)
+  // console.log(recipes)
   return (
     <RecipesWrapper>
-      {recipes.map((recipe) => {
+      {recipes && recipes.map((recipe) => {
         return (
         <RecipeCard key={recipe.title}>
           <img src={recipe.image} alt={recipe.title} />

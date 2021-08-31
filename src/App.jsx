@@ -10,13 +10,16 @@ function App() {
   useEffect(() => {
     const recipeStr = JSON.stringify(recipes)
     localStorage.setItem('recipes', recipeStr);
+    console.log('updating recipes ' + recipes)
   },[recipes])
 
   useEffect(() => {
-    const json = localStorage.getItem('recipes')
-    // const recipesJson = JSON.parse(json);
-    // setRecipes(recipesJson)
-    console.log(JSON.parse(json))
+    if(localStorage.getItem('recipes')){
+      const json = localStorage.getItem('recipes')
+      // setRecipes(JSON.parse(json))
+      console.log(JSON.parse(json))
+    // } else setRecipes([])
+    }else {console.log(localStorage.getItem('recipes'))}
   }, [])
 
   return (
