@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import styled from 'styled-components';
 import Form from './components/Form';
@@ -7,6 +7,18 @@ import Recipes from './components/Recipes'
 function App() {
   const [recipes, setRecipes] = useState([]);
 
+  useEffect(() => {
+    const recipeStr = JSON.stringify(recipes)
+    localStorage.setItem('recipes', recipeStr);
+  },[recipes])
+
+  useEffect(() => {
+    const json = localStorage.getItem('recipes')
+    // const recipesJson = JSON.parse(json);
+    // setRecipes(recipesJson)
+    console.log(JSON.parse(json))
+  }, [])
+
   return (
     <AppWrapper>
       <Title>Recipe Search</Title>
@@ -14,7 +26,7 @@ function App() {
         recipes={recipes}
         setRecipes={setRecipes}
         />
-        <Recipes recipes={recipes}/>
+      <Recipes recipes={recipes}/>
     </AppWrapper>
   );
 }
