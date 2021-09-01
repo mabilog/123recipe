@@ -3,7 +3,7 @@ import{ Link } from 'react-router-dom'
 import styled from 'styled-components';
 
 const Recipes = ({ recipes }) => {
-  // console.log(recipes)
+  console.log(recipes)
   return (
     <RecipesWrapper>
       {recipes && recipes.map((recipe) => {
