@@ -14,6 +14,7 @@ const Recipe = ({match}) => {
       setRecipe(res)
     })
     .catch(err => console.log("Something went wrong while fetching recipe info " + err))
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   

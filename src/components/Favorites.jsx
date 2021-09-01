@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 const Favorites = ({ favorites }) => {
   favorites.map(favorite => console.log(favorite.id))
 
   return (
     <div>
-      
+      Favorites Component
     </div>
   )
 }
