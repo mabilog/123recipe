@@ -7,15 +7,12 @@ const Recipe = ({match}) => {
   const recipeId = match.params.id;
   const API_KEY = process.env.REACT_APP_API_KEY;
 
-
   useEffect(() => {
     fetch(`https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${API_KEY}`)
     .then(res => res.json())
     .then(res => {
-      console.log(res)
       setRecipe(res)
     })
-    // .then(data => setRecipe(data))
     .catch(err => console.log("Something went wrong while fetching recipe info " + err))
   }, [])
 
@@ -28,6 +25,7 @@ const Recipe = ({match}) => {
           <Image src={recipe.image} alt={recipe.title}/>
           <Summary>Summary</Summary>
           <p dangerouslySetInnerHTML={{ __html: recipe.summary}}></p>
+          <FavoriteBtn>Add to favorite</FavoriteBtn>
           <HomeBtn to='/'>Go Home</HomeBtn>
         </>
       }
@@ -63,10 +61,15 @@ const Summary = styled.h4`
   margin-bottom: 20px;
 `;
 
+const FavoriteBtn = styled.button`
+  padding: 3px 6px;
+  background: none;
+  border: 1px solid orange;
+`;
+
 const HomeBtn = styled(Link)`
   padding: 3px 6px;
-  background:none;
+  background: none;
   border: 1px solid orange;
-
 `;
 export default Recipe

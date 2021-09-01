@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const Form = ({ setRecipes }) => {
+const Form = ({ setRecipes, recipes }) => {
   const API_KEY = process.env.REACT_APP_API_KEY;
 
   const getRecipe = (e) => {
@@ -10,7 +10,11 @@ const Form = ({ setRecipes }) => {
 
       fetch(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=${API_KEY}&ingredients=${query}`)
       .then(res => res.json())
-      .then(data => setRecipes(data))
+      .then(data => {
+        setRecipes(data)
+        console.log(recipes)
+        console.log(data)
+      })
       .catch(err => console.log('Something went wrong ' + err))
     }
 

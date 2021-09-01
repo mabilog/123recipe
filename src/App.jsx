@@ -4,23 +4,22 @@ import styled from 'styled-components';
 import Form from './components/Form';
 import Recipes from './components/Recipes'
 
-function App() {
+function App({ favorites, setFavorites }) {
   const [recipes, setRecipes] = useState([]);
+  // const [favorites, setFavorites] = useState([]);
+  console.log(favorites);
+  // console.log(recipes)
+  useEffect(() => {    
+    if(localStorage.getItem('recipes')){
+      setRecipes(JSON.parse(localStorage.getItem('recipes')));
+    }else setRecipes([])
+  }, [])
 
   useEffect(() => {
     const recipeStr = JSON.stringify(recipes)
-    localStorage.setItem('recipes', recipeStr);
-    console.log('updating recipes ' + recipes)
-  },[recipes])
+    localStorage.setItem('recipes', recipeStr)
+  }, [recipes])
 
-  useEffect(() => {
-    if(localStorage.getItem('recipes')){
-      const json = localStorage.getItem('recipes')
-      // setRecipes(JSON.parse(json))
-      console.log(JSON.parse(json))
-    // } else setRecipes([])
-    }else {console.log(localStorage.getItem('recipes'))}
-  }, [])
 
   return (
     <AppWrapper>
@@ -28,6 +27,8 @@ function App() {
       <Form 
         recipes={recipes}
         setRecipes={setRecipes}
+        favorites={favorites}
+        setFavorites={setFavorites}
         />
       <Recipes recipes={recipes}/>
     </AppWrapper>

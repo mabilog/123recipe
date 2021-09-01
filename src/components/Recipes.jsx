@@ -14,7 +14,10 @@ const Recipes = ({ recipes }) => {
           <span>
             <Link to={{ 
               pathname: `recipe/${recipe.id}`,
-              state: { recipe: recipe.title}
+              state: { 
+                recipe: recipe.title,
+                id: recipe.id
+               }
               }}>Check recipe
               </Link>
             </span>
