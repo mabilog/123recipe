@@ -3,7 +3,7 @@ import{ Link } from 'react-router-dom'
 import styled from 'styled-components';
 
 const Recipes = ({ recipes }) => {
-  // console.log(recipes)
+  console.log(recipes)
   return (
     <RecipesWrapper>
       {recipes && recipes.map((recipe) => {
@@ -29,11 +29,14 @@ const Recipes = ({ recipes }) => {
 }
 
 const RecipesWrapper = styled.div`
+  position: relative;
   font-family: sans-serif;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  /* grid-template-columns: repeat(3, 1fr); */
   grid-gap: 1em;
   grid-auto-rows: minmax(100px, auto);
+  width: calc(calc(100vw / 3) * 2) ;
+  min-width: 720px;
 `;
 
 

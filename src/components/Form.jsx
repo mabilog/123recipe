@@ -1,26 +1,30 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components'
 
-const Form = ({ setRecipes, recipes }) => {
+const Form = ({ setRecipes, recipes, query, setQuery }) => {
   const API_KEY = process.env.REACT_APP_API_KEY;
-
+  const history = useHistory();
   const getRecipe = (e) => {
       e.preventDefault();
-      const query = e.target.recipeName.value;
-
       fetch(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=${API_KEY}&ingredients=${query}`)
       .then(res => res.json())
       .then(data => {
         setRecipes(data)
         console.log(recipes)
-        console.log(data)
       })
       .catch(err => console.log('Something went wrong ' + err))
+
+      history.push(`/recipes/${query}`)
     }
 
+  const setSearch = (e) => {
+    e.preventDefault();
+    setQuery(e.target.value)
+  }
   return (
      <FormWrapper onSubmit={getRecipe}>
-       <input type="text" name="recipeName"/>
+       <input type="text" name="recipeName" onChange={setSearch}/>
        <button type="submit">Submit</button>
      </FormWrapper>
 
@@ -31,7 +35,7 @@ const FormWrapper = styled.form`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: auto;
   height: 50px;
 
   input {
