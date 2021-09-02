@@ -5,21 +5,25 @@ import styled from 'styled-components';
 const Favorites = ({ 
   favorites,
   setFavorites,
-  toggleFavorite
+  // toggleFavorite
+  removeFavorite
 }) => {
+  console.log(favorites);
   
   return (
     <FavoriteWrapper>
-      <FavoriteCard>
+      {/* <FavoriteCard> */}
         {favorites && favorites.map(favorite => {
         return (
-          <div>
+          <FavoriteCard>
             <h4>{favorite.title}</h4>
-          </div>
+            <button onClick={() => removeFavorite(favorite)}>Remove from favorite</button>
+            <img src={favorite.image} alt={favorite.title}/>
+          </FavoriteCard>
           )
             })
           }
-      </FavoriteCard>
+      {/* </FavoriteCard> */}
       
     </FavoriteWrapper>
   )
@@ -43,6 +47,7 @@ const FavoriteWrapper = styled.div`
 const FavoriteCard = styled.div`
   display: flex;
   flex-direction: column;
+  width: 200px;
 `;
 
 export default Favorites

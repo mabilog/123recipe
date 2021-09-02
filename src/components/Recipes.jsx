@@ -6,7 +6,7 @@ const Recipes = ({
   recipes,
   addFavorite,
   removeFavorite,
-  toggleFavorite
+  // toggleFavorite
  }) => {
   console.log(recipes)
   return (
@@ -16,7 +16,7 @@ const Recipes = ({
         <RecipeCard key={recipe.title}>
           <img src={recipe.image} alt={recipe.title} />
           <h3>{recipe.title.length < 20 ? `${recipe.title}` : `${recipe.title.substring(0, 30)}...`}</h3>
-          <button onClick={() => toggleFavorite(recipe)}>add to favorite</button>
+          <button onClick={() => addFavorite(recipe)}>add to favorite</button>
           <span>
             <Link to={{ 
               pathname: `recipe/${recipe.id}`,

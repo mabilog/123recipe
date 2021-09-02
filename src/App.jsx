@@ -40,13 +40,13 @@ function App() {
   }
 
   const addFavorite = (recipe) => {
-    const newFavorites = [...favorites, recipe.id]
+    const newFavorites = [...favorites, recipe]
     setFavorites(newFavorites);
     localStorage.setItem('favorites', JSON.stringify(newFavorites))
   }
 
   const removeFavorite = (recipe) => {
-    const newFavorites = favorites.filter(favorite => favorite.id !== recipe.id)
+    const newFavorites = favorites.filter(favorite => favorite !== recipe)
     setFavorites(newFavorites);
     localStorage.setItem('favorites', JSON.stringify(newFavorites))
   }
@@ -76,8 +76,8 @@ function App() {
               favorites={favorites}
               setFavorites={setFavorites}
               addFavorite={addFavorite}
-              removeFavorite={removeFavorite}
-              toggleFavorite={toggleFavorite}
+              // removeFavorite={removeFavorite}
+              // toggleFavorite={toggleFavorite}
               />}
              /> 
         </Switch>
