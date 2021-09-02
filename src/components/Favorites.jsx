@@ -6,7 +6,7 @@ const Favorites = ({ favorites, setFavorites }) => {
 
   return (
     <FavoriteWrapper>
-      favorites component
+      favorites component new branch
     </FavoriteWrapper>
   )
 }
