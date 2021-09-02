@@ -2,7 +2,12 @@ import React from 'react'
 import{ Link } from 'react-router-dom'
 import styled from 'styled-components';
 
-const Recipes = ({ recipes }) => {
+const Recipes = ({ 
+  recipes,
+  addFavorite,
+  removeFavorite,
+  toggleFavorite
+ }) => {
   console.log(recipes)
   return (
     <RecipesWrapper>
@@ -11,6 +16,7 @@ const Recipes = ({ recipes }) => {
         <RecipeCard key={recipe.title}>
           <img src={recipe.image} alt={recipe.title} />
           <h3>{recipe.title.length < 20 ? `${recipe.title}` : `${recipe.title.substring(0, 30)}...`}</h3>
+          <button onClick={() => toggleFavorite(recipe)}>add to favorite</button>
           <span>
             <Link to={{ 
               pathname: `recipe/${recipe.id}`,
