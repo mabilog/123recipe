@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components';
 
@@ -34,11 +34,14 @@ const Navbar = ({
 }
 
 const NavbarWrapper = styled.div`
+  position: fixed;
+  top: 0;
+  width: 100vw;
   display: flex;
   justify-content: space-around;
   align-items: center;
   background: darkblue;
-
+  z-index: 3;
 `;
 
 const Title = styled.h1`

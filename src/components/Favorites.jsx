@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components';
 
 
@@ -6,19 +6,18 @@ const Favorites = ({ favorites, setFavorites }) => {
 
   return (
     <FavoriteWrapper>
-      favorites component new branch
+      favorites component 
     </FavoriteWrapper>
   )
 }
 
 const FavoriteWrapper = styled.div`
-  position: relative;
+  position: fixed;
   display: flex;
-  flex-wrap: wrap;
-  left: 0;
-  max-width: 200px;
-  width: calc(100vw / 3);
-  height: 100vh;
+  bottom: 0;
+  width: 100vw;
+  height: 150px;
+  background-color: aliceblue;
 
   @media screen and (max-width: 720px){
     display: none;

@@ -30,10 +30,13 @@ const Recipes = ({ recipes }) => {
 
 const RecipesWrapper = styled.div`
   position: relative;
+  top: 60px;
+  margin:auto;
+  /* left: 200px; */
   font-family: sans-serif;
   display: grid;
-  /* grid-template-columns: repeat(3, 1fr); */
-  grid-gap: 1em;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: auto;
   grid-auto-rows: minmax(100px, auto);
   width: calc(calc(100vw / 3) * 2) ;
   min-width: 720px;

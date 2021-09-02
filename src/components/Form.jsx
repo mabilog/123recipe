@@ -13,9 +13,10 @@ const Form = ({ setRecipes, recipes, query, setQuery }) => {
         setRecipes(data)
         console.log(recipes)
       })
+      .then(() => history.push(`/recipes/${query}`))
       .catch(err => console.log('Something went wrong ' + err))
 
-      history.push(`/recipes/${query}`)
+      // history.push(`/recipes/${query}`)
     }
 
   const setSearch = (e) => {
