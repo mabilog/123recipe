@@ -14,8 +14,8 @@ const Navbar = ({
   const history = useHistory();
   const goHome = () => {
     history.push('/')
-    setQuery('')
-    setRecipes('')
+    // setQuery('')
+    // setRecipes('')
   }
  
   return (

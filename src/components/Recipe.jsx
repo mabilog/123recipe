@@ -2,11 +2,11 @@ import React,{ useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
-const Recipe = (props) => {
-  const [recipe, setRecipe] = useState([]);
+const Recipe = ({recipe}) => {
+  // const [recipe, setRecipe] = useState([]);
   // const recipeId = match.params.id;
-  const API_KEY = process.env.REACT_APP_API_KEY;
-  console.log(props)
+  // const API_KEY = process.env.REACT_APP_API_KEY;
+  console.log(recipe)
   // console.log(recipeId);
 
   // useEffect(() => {

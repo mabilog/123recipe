@@ -9,6 +9,7 @@ import Recipes from './components/Recipes';
 
 function App() {
   const [favorites, setFavorites] = useState([]);
+  const [recipe, setRecipe] = useState([]);
   const [recipes, setRecipes] = useState([]);
   const [query, setQuery] = useState('');
 
@@ -20,6 +21,8 @@ function App() {
     if(localStorage.getItem('favorites')) 
       setFavorites(JSON.parse(localStorage.getItem('favorites')))
     else setFavorites([])
+    
+    setRecipe([])
   }, [])
 
   useEffect(() => {
@@ -69,13 +72,15 @@ function App() {
               recipes={recipes}
               addFavorite={addFavorite}
               removeFavorite={removeFavorite}
+              setRecipe={setRecipe}
               // toggleFavorite={toggleFavorite}
               />}/>
-          <Route path='/recipe/:id' render={() => 
+          <Route path={'/recipe/:id'} component={() => 
             <Recipe 
               favorites={favorites}
               setFavorites={setFavorites}
               addFavorite={addFavorite}
+              recipe={recipe}
               // removeFavorite={removeFavorite}
               // toggleFavorite={toggleFavorite}
               />
