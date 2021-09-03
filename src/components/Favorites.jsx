@@ -16,9 +16,9 @@ const Favorites = ({
         {favorites && favorites.map(favorite => {
         return (
           <FavoriteCard>
-            <h4>{favorite.title}</h4>
-            <button onClick={() => removeFavorite(favorite)}>Remove from favorite</button>
-            <img src={favorite.image} alt={favorite.title}/>
+              <FavoriteTitle>{favorite.title}</FavoriteTitle>
+              <button onClick={() => removeFavorite(favorite)}>Remove from favorite</button>
+              <img src={favorite.image} alt={favorite.title}/>
           </FavoriteCard>
           )
             })
@@ -32,22 +32,30 @@ const Favorites = ({
 const FavoriteWrapper = styled.div`
   position: fixed;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   bottom: 0;
   width: 100vw;
   height: 150px;
   background-color: aliceblue;
-
-  @media screen and (max-width: 720px){
-    display: none;
-  }
+  overflow-x: auto;
 `;
 
 const FavoriteCard = styled.div`
   display: flex;
   flex-direction: column;
-  width: 200px;
+  align-items: center;
+  width: auto;
+
+  img{
+    height: 75px;
+    width: 75px;
+  }
 `;
+
+const FavoriteTitle = styled.h4`
+  font-size: 12px;
+
+`
 
 export default Favorites

@@ -40,11 +40,12 @@ const RecipesWrapper = styled.div`
   margin:auto;
   /* left: 200px; */
   font-family: sans-serif;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-flow: row wrap;
+  /* grid-template-columns: repeat(3, 1fr); */
   grid-gap: auto;
   grid-auto-rows: minmax(100px, auto);
-  width: calc(calc(100vw / 3) * 2) ;
+  /* width: calc(calc(100vw / 3) * 2) ; */
   min-width: 720px;
 `;
 

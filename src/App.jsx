@@ -95,6 +95,7 @@ function App() {
 
 const AppWrapper = styled.div`
   display: flex;
+  font-family: sans-serif;
 `;
 
 export default App;
