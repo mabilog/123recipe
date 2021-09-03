@@ -17,7 +17,7 @@ const Favorites = ({
         return (
           <FavoriteCard>
               <FavoriteTitle>{favorite.title}</FavoriteTitle>
-              <button onClick={() => removeFavorite(favorite)}>Remove from favorite</button>
+              <button onClick={() => removeFavorite(favorite)}>Remove from Favorite</button>
               <img src={favorite.image} alt={favorite.title}/>
           </FavoriteCard>
           )
