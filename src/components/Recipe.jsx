@@ -2,20 +2,23 @@ import React,{ useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
-const Recipe = ({match}) => {
+const Recipe = (props) => {
   const [recipe, setRecipe] = useState([]);
-  const recipeId = match.params.id;
+  // const recipeId = match.params.id;
   const API_KEY = process.env.REACT_APP_API_KEY;
+  console.log(props)
+  // console.log(recipeId);
 
-  useEffect(() => {
-    fetch(`https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${API_KEY}`)
-    .then(res => res.json())
-    .then(res => {
-      setRecipe(res)
-    })
-    .catch(err => console.log("Something went wrong while fetching recipe info " + err))
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  // useEffect(() => {
+  //   fetch(`https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${API_KEY}`)
+  //   .then(res => res.json())
+  //   .then(res => {
+  //     setRecipe(res)
+  //     console.log(res)
+  //   })
+  //   .catch(err => console.log("Something went wrong while fetching recipe info " + err))
+  // // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [])
 
   
   return (

@@ -27,20 +27,20 @@ function App() {
     localStorage.setItem('recipes', recipeStr)
   }, [recipes])
   
-  const toggleFavorite = (recipe) => {
-    console.log(recipe)
-    const newFavorites = (favorites.includes(recipe)) 
-      ? favorites.filter(favorite => favorite !== recipe) 
-      :  [...favorites, recipe]
+  // const toggleFavorite = (recipe) => {
+  //   console.log(recipe)
+  //   const newFavorites = (favorites.includes(recipe)) 
+  //     ? favorites.filter(favorite => favorite !== recipe) 
+  //     :  [...favorites, recipe]
 
-      setFavorites(newFavorites)
-      localStorage.setItem('favorites', JSON.stringify(newFavorites))
+  //     setFavorites(newFavorites)
+  //     localStorage.setItem('favorites', JSON.stringify(newFavorites))
     
-    // favorites.filter(favorite => favorite.id !== recipe.id)
-  }
+  //   // favorites.filter(favorite => favorite.id !== recipe.id)
+  // }
 
   const addFavorite = (recipe) => {
-    const newFavorites = [...favorites, recipe]
+    const newFavorites = (favorites.includes(recipe)) ? [...favorites] : [...favorites, recipe]
     setFavorites(newFavorites);
     localStorage.setItem('favorites', JSON.stringify(newFavorites))
   }
@@ -69,7 +69,7 @@ function App() {
               recipes={recipes}
               addFavorite={addFavorite}
               removeFavorite={removeFavorite}
-              toggleFavorite={toggleFavorite}
+              // toggleFavorite={toggleFavorite}
               />}/>
           <Route path='/recipe/:id' render={() => 
             <Recipe 
@@ -78,8 +78,8 @@ function App() {
               addFavorite={addFavorite}
               // removeFavorite={removeFavorite}
               // toggleFavorite={toggleFavorite}
-              />}
-             /> 
+              />
+            }/> 
         </Switch>
       </Router>
       

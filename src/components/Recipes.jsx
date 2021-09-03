@@ -8,7 +8,6 @@ const Recipes = ({
   removeFavorite,
   // toggleFavorite
  }) => {
-  console.log(recipes)
   return (
     <RecipesWrapper>
       {recipes && recipes.map((recipe) => {
@@ -19,13 +18,12 @@ const Recipes = ({
           <button onClick={() => addFavorite(recipe)}>add to favorite</button>
           <span>
             <Link to={{ 
-              pathname: `recipe/${recipe.id}`,
+              pathname: `/recipe/${recipe.id}`,
               state: { 
                 recipe: recipe.title,
                 id: recipe.id
                }
-              }}>Check recipe
-              </Link>
+              }}>Check recipe</Link>
             </span>
         </RecipeCard>
         )
