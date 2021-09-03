@@ -1,7 +1,6 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components'
-import 'boxicons';
 
 const Form = ({ setRecipes, recipes, query, setQuery }) => {
   const API_KEY = process.env.REACT_APP_API_KEY;
