@@ -12,8 +12,13 @@ const Favorites = ({
 }) => {
   console.log(favorites);
   
+  const toggleClassName = () => {
+    const element = document.getElementById('favorite__wrapper');
+    element.classList.toggle('active');
+  }
   return (
-    <FavoriteWrapper>
+    <FavoriteWrapper id='favorite__wrapper'>
+      <ToggleBtn onClick={toggleClassName}>X</ToggleBtn>
       {/* <FavoriteCard> */}
         {favorites && favorites.map(favorite => {
         return (
@@ -33,15 +38,22 @@ const Favorites = ({
 }
 
 const FavoriteWrapper = styled.div`
-  position: fixed;
+  position: relative;
   display: flex;
-  justify-content: flex-start;
+  /* justify-content: center; */
   align-items: center;
-  bottom: 0;
+  /* bottom: 0; */
   width: 100vw;
   height: 150px;
   background-color: aliceblue;
   overflow-x: auto;
+
+  
+`;
+
+const ToggleBtn = styled.button`
+ position: relative;
+ top: -8px;
 `;
 
 const FavoriteCard = styled.div`

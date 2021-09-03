@@ -6,7 +6,7 @@ import Favorites from './components/Favorites';
 import Navbar from './components/Navbar';
 import Recipe from './components/Recipe';
 import Recipes from './components/Recipes';
-
+import Sidebar from './components/Sidebar'
 function App() {
   const [favorites, setFavorites] = useState([]);
   const [recipeId, setRecipeId] = useState('');
@@ -60,14 +60,14 @@ function App() {
   return (
     <AppWrapper>
       <Router>
-        <Navbar 
+        {/* <Navbar 
           favorites={favorites} 
           // setFavorites={setFavorites}
           recipes={recipes}
           setRecipes={setRecipes}
           query={query}
           setQuery={setQuery}
-          />
+          /> */}
 
         <Switch>
           <Route path={`/recipes/${query}`} exact render={() =>  
@@ -90,15 +90,15 @@ function App() {
             }/> 
         </Switch>
         
-        <Favorites 
+        {/* <Favorites 
           favorites={favorites}
           setFavorites={setFavorites}
           addFavorite={addFavorite}
           removeFavorite={removeFavorite}
           setRecipeId={setRecipeId}
-          />
+          /> */}
       </Router>
-      
+      <Sidebar/>
        
     </AppWrapper>
   );

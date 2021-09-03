@@ -1,7 +1,7 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components'
-import SearchIcon from '@material-ui/icons/Search';
+import 'boxicons';
 
 const Form = ({ setRecipes, recipes, query, setQuery }) => {
   const API_KEY = process.env.REACT_APP_API_KEY;
@@ -28,7 +28,7 @@ const Form = ({ setRecipes, recipes, query, setQuery }) => {
      <FormWrapper onSubmit={getRecipe}>
        <input type="text" name="recipeName" onChange={setSearch}/>
        {/* <button type="submit">Submit</button> */}
-       <SearchBtn type="submit"><SearchIcon/></SearchBtn>
+       <SearchBtn type="submit"><box-icon name='search'/></SearchBtn>
      </FormWrapper>
 
   )
@@ -55,6 +55,7 @@ const SearchBtn = styled.button`
   background: none;
   border: none;
   /* right: 30px; */
+  cursor: pointer;
 `
 
 
