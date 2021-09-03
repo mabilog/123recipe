@@ -9,7 +9,7 @@ import Recipes from './components/Recipes';
 
 function App() {
   const [favorites, setFavorites] = useState([]);
-  const [recipe, setRecipe] = useState([]);
+  const [recipeId, setRecipeId] = useState('');
   const [recipes, setRecipes] = useState([]);
   const [query, setQuery] = useState('');
 
@@ -22,13 +22,15 @@ function App() {
       setFavorites(JSON.parse(localStorage.getItem('favorites')))
     else setFavorites([])
     
-    setRecipe([])
+    setRecipeId([])
   }, [])
 
   useEffect(() => {
     const recipeStr = JSON.stringify(recipes)
     localStorage.setItem('recipes', recipeStr)
   }, [recipes])
+  
+  useEffect(() => console.log(recipeId), [recipeId])
   
   // const toggleFavorite = (recipe) => {
   //   console.log(recipe)
@@ -54,12 +56,13 @@ function App() {
     localStorage.setItem('favorites', JSON.stringify(newFavorites))
   }
   
+  console.log(recipeId)
   return (
     <AppWrapper>
       <Router>
         <Navbar 
           favorites={favorites} 
-          setFavorites={setFavorites}
+          // setFavorites={setFavorites}
           recipes={recipes}
           setRecipes={setRecipes}
           query={query}
@@ -72,28 +75,31 @@ function App() {
               recipes={recipes}
               addFavorite={addFavorite}
               removeFavorite={removeFavorite}
-              setRecipe={setRecipe}
+              setRecipeId={setRecipeId}
               // toggleFavorite={toggleFavorite}
               />}/>
           <Route path={'/recipe/:id'} component={() => 
             <Recipe 
-              favorites={favorites}
-              setFavorites={setFavorites}
+              // favorites={favorites}
+              // setFavorites={setFavorites}
               addFavorite={addFavorite}
-              recipe={recipe}
+              recipeId={recipeId}
               // removeFavorite={removeFavorite}
               // toggleFavorite={toggleFavorite}
               />
             }/> 
         </Switch>
-      </Router>
-      
-       <Favorites 
+        
+        <Favorites 
           favorites={favorites}
           setFavorites={setFavorites}
           addFavorite={addFavorite}
           removeFavorite={removeFavorite}
+          setRecipeId={setRecipeId}
           />
+      </Router>
+      
+       
     </AppWrapper>
   );
 }

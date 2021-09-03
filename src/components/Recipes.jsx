@@ -6,7 +6,7 @@ const Recipes = ({
   recipes,
   addFavorite,
   removeFavorite,
-  setRecipe
+  setRecipeId
   // toggleFavorite
  }) => {
   return (
@@ -18,7 +18,10 @@ const Recipes = ({
           <h3>{recipe.title.length < 20 ? `${recipe.title}` : `${recipe.title.substring(0, 30)}...`}</h3>
           <button onClick={() => addFavorite(recipe)}>add to favorite</button>
           <span>
-            <Link to={{ pathname: `/recipe/${recipe.id}`}} onClick={() => setRecipe(recipe)}>Check recipe</Link>
+            {/* <Link to={{ pathname: `/recipe/${recipe.id}`}} onClick={() => setRecipe(recipe)}>Check recipe</Link>
+             */}
+            <Link to={{ pathname: `/recipe/${recipe.id}` }} onClick={() => setRecipeId(recipe.id)}>Check recipe</Link>
+
             </span>
         </RecipeCard>
         )

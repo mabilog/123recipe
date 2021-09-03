@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 
@@ -6,7 +7,8 @@ const Favorites = ({
   favorites,
   setFavorites,
   // toggleFavorite
-  removeFavorite
+  removeFavorite,
+  setRecipeId
 }) => {
   console.log(favorites);
   
@@ -19,6 +21,7 @@ const Favorites = ({
               <FavoriteTitle>{favorite.title}</FavoriteTitle>
               <button onClick={() => removeFavorite(favorite)}>Remove from Favorite</button>
               <img src={favorite.image} alt={favorite.title}/>
+              <Link to={{ pathname: `/recipe/${favorite.id}`}} onClick={setRecipeId(favorite.id)}>View</Link>
           </FavoriteCard>
           )
             })
