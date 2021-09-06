@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState,useEffect } from 'react'
+import { Link, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
 import ForumIcon from '@material-ui/icons/Forum';
@@ -9,74 +10,64 @@ import MenuIcon from '@material-ui/icons/Menu';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
 import SearchIcon from '@material-ui/icons/Search';
 import SettingsIcon from '@material-ui/icons/Settings';
+import RestaurantMenuIcon from '@material-ui/icons/RestaurantMenu';
+import profile from '../assets/autumn (2).jpg'
 
-const Sidebar = () => {
-  const toggleMenu = () => {
+import Form from './Form'
 
-  }
+const Sidebar = ({ recipes, setRecipes, query, setQuery}) => {
+  const [menuToggle, setMenuToggle] = useState(false)
+
+  const history= useHistory();
+
+
+  useEffect(() => {} , [menuToggle])
+
+
   return (
-    <SidebarWrapper>
+    <SidebarWrapper onClick={() => setMenuToggle(!menuToggle)}>
       <LogoWrapper>
         <Logo>
           <MenuBookIcon/>
-          <LogoName>123Recipe</LogoName>
+          <LogoName onClick={() => history.push('/')}>123Recipe</LogoName>
         </Logo>
-        <MenuBtn><MenuIcon/></MenuBtn>
+        {/* <MenuBtn><MenuIcon/></MenuBtn> */}
       </LogoWrapper>
       <NavList>
         <li>
-          <a href="/" target="_blank">
-            <SearchIcon className='searchIcon'/>
-            <input type="text" name="search" placeholder="Search..."/>
-          </a>
+          <Form 
+            recipes={recipes}
+            setRecipes={setRecipes}
+            query={query}
+            setQuery={setQuery}
+            />
+        </li>
+        <li>
+          <SideLink to={'/recipes'}>
+            <RestaurantMenuIcon/>
+            <span>Recipes</span>
+          </SideLink>
           {/* <span className="tooltip">Dashboard</span> */}
         </li>
         <li>
-          <a href="/" target="_blank">
-          <PersonOutlineIcon/>
-            <span>User</span>
-          </a>
-          {/* <span className="tooltip">Dashboard</span> */}
-        </li>
-        <li>
-          <a href="/" target="_blank">
-            <ForumIcon/>
-            <span>Message</span>
-          </a>
-          {/* <span className="tooltip">Dashboard</span> */}
-        </li>
-        <li>
-          <a href="/" target="_blank">
+          <SideLink to={'/saved'}>
             <FavoriteBorderIcon/>
             <span>Saved</span>
-          </a>
-          {/* <span className="tooltip">Dashboard</span> */}
+          </SideLink>
         </li>
-        <li>
-          <a href="/" target="_blank">
-            <ExitToAppIcon/>
-            <span>Sign In</span>
-          </a>
-          {/* <span className="tooltip">Dashboard</span> */}
-        </li>
-        <li>
-          <a href="/" target="_blank">
-            <SettingsIcon/>
-            <span>Settings</span>
-          </a>
-          {/* <span className="tooltip">Dashboard</span> */}
-        </li>
+
       </NavList>
-      <ProfileContent>
+      <ProfileContent className="profile_content">
         <Profile>
           <ProfileDetails>
-            <NameJob>
+            <img src={profile} alt="profile"/>
+            <div>
               <Name>Angelo Mabilog</Name>
               <Job>Web Developer</Job>
-            </NameJob>
+            </div>
           </ProfileDetails>
         </Profile>
-        <LogOut><ExitToAppIcon/></LogOut>
+        {/* <LogOut><ExitToAppIcon/></LogOut> */}
       </ProfileContent>
     </SidebarWrapper>
   )
@@ -89,12 +80,10 @@ const SidebarWrapper = styled.div`
   background: #11101d;
   padding: 6px 14px;
   /* color: white; */
-  
-  
 `;
 
 const LogoWrapper = styled.div`
- 
+ cursor: pointer;
 `;
 
 const Logo = styled.div`
@@ -103,35 +92,24 @@ const Logo = styled.div`
   align-items: center;
   height: 50px;
   width: 100%;
+  padding: 10px;
 `;
 
 const LogoName = styled.div`
   font-size: 20px;
   font-weight:400;
-`;
-
-const MenuBtn = styled.div`
-    color: white;
-    position: absolute;
-    left: 90%;
-    top: 6px;
-    font-size: 20px;
-    height: 50px;
-    width: 50px;
-    text-align: center; 
-    line-height: 50px;
-    transform:translatex(-50%);
+  padding-left: 10px;
 `;
 
 const NavList = styled.ul`
   margin-top: 20px;
   width: 100%;
-
+  
   li{
     position: relative;
     height: 50px;
     width: 100%;
-    margin: 0 5px;
+    margin: 20px 5px;
     list-style: none;
     line-height: 50px;
     /* border-radius: 5px; */
@@ -148,35 +126,18 @@ const NavList = styled.ul`
         border-radius: 50px;
         /* transform: translateX(-5px); */
       }
-      span{
+      /* span{
         padding-left: 15px;
-      }
-
-      input{
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        left: 0;
-        top: 0;
-        border-radius: 12px;
-        outline: none;
-        border: none;
-        padding-left: 50px;
-        font-size: 18px;
-        color: white;
-        background: #1d1b31;
-      }
+      } */
       
-      .searchIcon{
-        position: absolute;
-        /* align-items: center; */
-        top: 14px;
-        z-index: 99;
-        color: white;
-      }
     }
   }
-`;
+  `;
+  const SideLink = styled(Link)`
+    span{
+      padding-left: 15px;
+    }
+  `;
 
 
 const ProfileContent = styled.div`
@@ -191,15 +152,20 @@ const Profile = styled.div`
   position: relative;
   padding: 10px 6px;
   height: 60px;
+  display: flex;
 `;
 
 const ProfileDetails = styled.div`
   display: flex;
   align-items: center;
-`;
 
-const NameJob = styled.div`
-
+  img{
+    height: 45px;
+    width: 45px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-right: 10px;
+  }
 `;
 
 const Name = styled.div`
@@ -207,9 +173,18 @@ const Name = styled.div`
 `;
 
 const Job = styled.div`
-  font-size: 14px;
+  font-size: 12px;
 `;
-const LogOut = styled.div`
-
-`;
+// const LogOut = styled.div`
+//   position: absolute;
+//   top: 50%;
+//   right: 0;
+//   transform: translateY(-50%);
+//   background: #1d1b31;
+//   width: 100%;
+//   height: 60px;
+//   line-height: 60%;
+//   border-radius: 0px;
+//   transition: all: 0.5s ease;
+// `;
 export default Sidebar

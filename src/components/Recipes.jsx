@@ -20,7 +20,10 @@ const Recipes = ({
           <span>
             {/* <Link to={{ pathname: `/recipe/${recipe.id}`}} onClick={() => setRecipe(recipe)}>Check recipe</Link>
              */}
-            <Link to={{ pathname: `/recipe/${recipe.id}` }} onClick={() => setRecipeId(recipe.id)}>Check recipe</Link>
+            <Link to={{ 
+              pathname: `/recipe/${recipe.id}`,
+              state: { id: recipe.id}
+           }} onClick={() => setRecipeId(recipe.id)}>Check recipe</Link>
 
             </span>
         </RecipeCard>
@@ -39,16 +42,17 @@ const RecipesWrapper = styled.div`
   display: flex;
   flex-flow: row wrap;
   /* grid-template-columns: repeat(3, 1fr); */
-  grid-gap: auto;
-  grid-auto-rows: minmax(100px, auto);
+  /* grid-gap: auto;
+  grid-auto-rows: minmax(100px, auto); */
   /* width: calc(calc(100vw / 3) * 2) ; */
-  min-width: 720px;
+  /* min-width: 720px; */
 `;
 
 
 const RecipeCard = styled.div`
+  flex: 1 1 160px;
   margin: 0 auto;
-  width: 400px;
+  width: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;

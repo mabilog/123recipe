@@ -10,7 +10,7 @@ const Recipe = ({recipeId, addFavorite}) => {
   // console.log(recipeData)
   // console.log(recipeId);
 
-  console.log(recipeId)
+  // console.log(props)
   useEffect(() => {
     fetch(`https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${API_KEY}`)
     .then(res => res.json())
@@ -19,10 +19,8 @@ const Recipe = ({recipeId, addFavorite}) => {
       console.log(res)
     })
     .catch(err => console.log("Something went wrong while fetching recipe info " + err))
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  useEffect(() => console.log('new recipeId'), [recipeId])
   
   return (
     <RecipeWrapper>
@@ -48,7 +46,7 @@ const RecipeWrapper = styled.div`
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-  width: 80vw;
+  width: 100%;
   min-width: 480px;
   font-family: sans-serif;
   position: relative;
