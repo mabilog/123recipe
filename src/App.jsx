@@ -79,7 +79,7 @@ function App() {
             /> */}
 
           <Switch>
-            <Route path={`/recipes/${query}`} exact render={() =>  
+            <Route path={`/recipes/`} exact render={() =>  
               <Recipes 
                 recipes={recipes}
                 addFavorite={addFavorite}
@@ -131,7 +131,8 @@ const AppWrapper = styled.div`
 const MainComponent = styled.div`
   position: relative;
   /* min-height: 100vh; */
-  height: auto;
+  /* height: auto; */
+  overflow-y: auto;
   top: 0;
   width: calc(100vw - 240px);
   left: 240px;

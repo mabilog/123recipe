@@ -35,12 +35,14 @@ const Recipes = ({
 
 const RecipesWrapper = styled.div`
   position: relative;
-  top: 60px;
+  /* top: 60px; */
   margin:auto;
   /* left: 200px; */
   font-family: sans-serif;
   display: flex;
   flex-flow: row wrap;
+  /* height: auto; */
+  /* overflow-y: auto; */
   /* grid-template-columns: repeat(3, 1fr); */
   /* grid-gap: auto;
   grid-auto-rows: minmax(100px, auto); */
@@ -50,9 +52,10 @@ const RecipesWrapper = styled.div`
 
 
 const RecipeCard = styled.div`
-  flex: 1 1 160px;
+  /* flex: 1 1 160px; */
   margin: 0 auto;
-  width: 200px;
+  width: 400px;
+  min-width: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -1,5 +1,5 @@
 import React,{ useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 
 const Recipe = ({recipeId, addFavorite}) => {
@@ -11,6 +11,8 @@ const Recipe = ({recipeId, addFavorite}) => {
   // console.log(recipeId);
 
   // console.log(props)
+  const history = useHistory();
+  console.log(history)
   useEffect(() => {
     fetch(`https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${API_KEY}`)
     .then(res => res.json())
@@ -32,7 +34,8 @@ const Recipe = ({recipeId, addFavorite}) => {
           <Summary>Summary</Summary>
           <p dangerouslySetInnerHTML={{ __html: recipe.summary}}></p>
           <FavoriteBtn onClick={() => addFavorite(recipe)}>Add to favorite</FavoriteBtn>
-          <HomeBtn to='/'>Go Home</HomeBtn>
+          {/* <HomeBtn to='/'>Go Home</HomeBtn> */}
+          <button onClick={() => history.goBack()}>Go back</button>
         </>
       }
       
@@ -46,11 +49,12 @@ const RecipeWrapper = styled.div`
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-  width: 100%;
+  width: 70%;
   min-width: 480px;
   font-family: sans-serif;
   position: relative;
-  top: 80px;
+  height: 100vh;
+  /* top: 80px; */
 `;
 
 const Title = styled.h3`

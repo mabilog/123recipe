@@ -18,7 +18,9 @@ const Form = ({ setRecipes, recipes, query, setQuery }) => {
         // console.log(recipes)
         // console.log(data)
       })
-      .then(() => history.push(`/recipes/${query}`))
+      // .then(() => history.push(`/recipes/${query}`))
+      .then(() => history.push(`/recipes/`))
+
       .catch(err => console.log('Something went wrong ' + err))
 
       // history.push(`/recipes/${query}`)
