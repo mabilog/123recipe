@@ -3,7 +3,6 @@ import {  BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Favorites from './components/Favorites';
-// import Navbar from './components/Navbar';
 import Recipe from './components/Recipe';
 import Recipes from './components/Recipes';
 import Sidebar from './components/Sidebar'
@@ -30,21 +29,7 @@ function App() {
     const recipeStr = JSON.stringify(recipes)
     localStorage.setItem('recipes', recipeStr)
   }, [recipes])
-  
-  useEffect(() => console.log(recipeId), [recipeId])
-  
-  // const toggleFavorite = (recipe) => {
-  //   console.log(recipe)
-  //   const newFavorites = (favorites.includes(recipe)) 
-  //     ? favorites.filter(favorite => favorite !== recipe) 
-  //     :  [...favorites, recipe]
-
-  //     setFavorites(newFavorites)
-  //     localStorage.setItem('favorites', JSON.stringify(newFavorites))
-    
-  //   // favorites.filter(favorite => favorite.id !== recipe.id)
-  // }
-
+   
   const addFavorite = (recipe) => {
     const newFavorites = (favorites.includes(recipe)) ? [...favorites] : [...favorites, recipe]
     setFavorites(newFavorites);
@@ -57,7 +42,6 @@ function App() {
     localStorage.setItem('favorites', JSON.stringify(newFavorites))
   }
   
-  console.log(recipeId)
   return (
     <AppWrapper>
       <Router>
@@ -68,15 +52,6 @@ function App() {
           setQuery={setQuery}
           />
         <MainComponent>
-          {/* <Home/> */}
-          {/* <Navbar 
-            favorites={favorites} 
-            // setFavorites={setFavorites}
-            recipes={recipes}
-            setRecipes={setRecipes}
-            query={query}
-            setQuery={setQuery}
-            /> */}
 
           <Switch>
             <Route path={`/recipes/`} exact render={() =>  
@@ -85,16 +60,11 @@ function App() {
                 addFavorite={addFavorite}
                 removeFavorite={removeFavorite}
                 setRecipeId={setRecipeId}
-                // toggleFavorite={toggleFavorite}
                 />}/>
             <Route path={'/recipe/:id'} component={() => 
               <Recipe 
-                // favorites={favorites}
-                // setFavorites={setFavorites}
                 addFavorite={addFavorite}
                 recipeId={recipeId}
-                // removeFavorite={removeFavorite}
-                // toggleFavorite={toggleFavorite}
                 />
               }/> 
             <Route path={'/saved/'} component={() => 
@@ -107,13 +77,6 @@ function App() {
             }/>
           </Switch>
           
-          {/* <Favorites 
-            favorites={favorites}
-            setFavorites={setFavorites}
-            addFavorite={addFavorite}
-            removeFavorite={removeFavorite}
-            setRecipeId={setRecipeId}
-            /> */}
         </MainComponent>
       </Router>
         
@@ -130,12 +93,9 @@ const AppWrapper = styled.div`
 
 const MainComponent = styled.div`
   position: relative;
-  /* min-height: 100vh; */
-  /* height: auto; */
-  overflow-y: auto;
   top: 0;
-  width: calc(100vw - 240px);
+  width: calc(100vw - 260px);
   left: 240px;
-  overflow: auto;
+  z-index: 99;
 `
 export default App;

@@ -5,9 +5,7 @@ import styled from 'styled-components';
 const Recipes = ({ 
   recipes,
   addFavorite,
-  removeFavorite,
   setRecipeId
-  // toggleFavorite
  }) => {
   return (
     <RecipesWrapper>
@@ -16,10 +14,12 @@ const Recipes = ({
         <RecipeCard key={recipe.title}>
           <img src={recipe.image} alt={recipe.title} />
           <h3>{recipe.title.length < 20 ? `${recipe.title}` : `${recipe.title.substring(0, 30)}...`}</h3>
-          <button onClick={() => addFavorite(recipe)}>add to favorite</button>
+
+          <button onClick={() => {
+            addFavorite(recipe)
+            }}
+            >add to favorite</button>
           <span>
-            {/* <Link to={{ pathname: `/recipe/${recipe.id}`}} onClick={() => setRecipe(recipe)}>Check recipe</Link>
-             */}
             <Link to={{ 
               pathname: `/recipe/${recipe.id}`,
               state: { id: recipe.id}
@@ -35,32 +35,27 @@ const Recipes = ({
 
 const RecipesWrapper = styled.div`
   position: relative;
-  /* top: 60px; */
-  margin:auto;
-  /* left: 200px; */
+  margin: auto;
   font-family: sans-serif;
   display: flex;
   flex-flow: row wrap;
-  /* height: auto; */
-  /* overflow-y: auto; */
-  /* grid-template-columns: repeat(3, 1fr); */
-  /* grid-gap: auto;
-  grid-auto-rows: minmax(100px, auto); */
-  /* width: calc(calc(100vw / 3) * 2) ; */
-  /* min-width: 720px; */
+  max-width: 1000px;
+  width: 100%;
+  
+  @media screen and (max-width: 780px){
+    flex-direction: column;
+  }
 `;
 
 
 const RecipeCard = styled.div`
-  /* flex: 1 1 160px; */
   margin: 0 auto;
-  width: 400px;
-  min-width: 200px;
+  width: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
+  padding: 20px;
   h3{
     margin: 10px;
   }
@@ -85,6 +80,5 @@ const RecipeCard = styled.div`
     cursor: pointer;
   }
 `;
-
 
 export default Recipes

@@ -5,21 +5,13 @@ import styled from 'styled-components';
 
 const Favorites = ({ 
   favorites,
-  setFavorites,
-  // toggleFavorite
+  // setFavorites,
   removeFavorite,
   setRecipeId
 }) => {
-  console.log(favorites);
   
-  // const toggleClassName = () => {
-  //   const element = document.getElementById('favorite__wrapper');
-  //   element.classList.toggle('active');
-  // }
   return (
     <FavoriteWrapper id='favorite__wrapper'>
-      {/* <ToggleBtn onClick={toggleClassName}>X</ToggleBtn> */}
-      {/* <FavoriteCard> */}
         {favorites && favorites.map(favorite => {
         return (
           <FavoriteCard>
@@ -31,7 +23,6 @@ const Favorites = ({
           )
             })
           }
-      {/* </FavoriteCard> */}
       
     </FavoriteWrapper>
   )
@@ -46,14 +37,9 @@ const FavoriteWrapper = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: aliceblue;
-  overflow-x: auto;
+  /* overflow-x: auto; */
 
   
-`;
-
-const ToggleBtn = styled.button`
- position: relative;
- top: -8px;
 `;
 
 const FavoriteCard = styled.div`
@@ -72,10 +58,5 @@ const FavoriteCard = styled.div`
     width: 150px;
   }
 `;
-
-// const FavoriteTitle = styled.h4`
-//   font-size: 12px;
-
-// `
 
 export default Favorites

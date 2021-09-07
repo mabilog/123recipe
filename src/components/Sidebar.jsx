@@ -1,37 +1,25 @@
-import React, { useState,useEffect } from 'react'
+import React from 'react'
 import { Link, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
-import ForumIcon from '@material-ui/icons/Forum';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
-import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import MenuIcon from '@material-ui/icons/Menu';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
-import SearchIcon from '@material-ui/icons/Search';
-import SettingsIcon from '@material-ui/icons/Settings';
 import RestaurantMenuIcon from '@material-ui/icons/RestaurantMenu';
 import profile from '../assets/autumn (2).jpg'
 
 import Form from './Form'
 
 const Sidebar = ({ recipes, setRecipes, query, setQuery}) => {
-  const [menuToggle, setMenuToggle] = useState(false)
-
   const history= useHistory();
 
 
-  useEffect(() => {} , [menuToggle])
-
-
   return (
-    <SidebarWrapper onClick={() => setMenuToggle(!menuToggle)}>
+    <SidebarWrapper>
       <LogoWrapper>
         <Logo>
           <MenuBookIcon/>
           <LogoName onClick={() => history.push('/')}>123Recipe</LogoName>
         </Logo>
-        {/* <MenuBtn><MenuIcon/></MenuBtn> */}
       </LogoWrapper>
       <NavList>
         <li>
@@ -47,7 +35,6 @@ const Sidebar = ({ recipes, setRecipes, query, setQuery}) => {
             <RestaurantMenuIcon/>
             <span>Recipes</span>
           </SideLink>
-          {/* <span className="tooltip">Dashboard</span> */}
         </li>
         <li>
           <SideLink to={'/saved'}>
@@ -55,8 +42,8 @@ const Sidebar = ({ recipes, setRecipes, query, setQuery}) => {
             <span>Saved</span>
           </SideLink>
         </li>
-
       </NavList>
+
       <ProfileContent className="profile_content">
         <Profile>
           <ProfileDetails>
@@ -67,7 +54,6 @@ const Sidebar = ({ recipes, setRecipes, query, setQuery}) => {
             </div>
           </ProfileDetails>
         </Profile>
-        {/* <LogOut><ExitToAppIcon/></LogOut> */}
       </ProfileContent>
     </SidebarWrapper>
   )

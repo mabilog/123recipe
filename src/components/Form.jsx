@@ -8,22 +8,15 @@ const Form = ({ setRecipes, recipes, query, setQuery }) => {
   const API_KEY = process.env.REACT_APP_API_KEY;
   const history = useHistory();
 
-  // console.log(useHistory())
   const getRecipe = (e) => {
       e.preventDefault();
       fetch(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=${API_KEY}&ingredients=${query}`)
       .then(res => res.json())
-      .then(data => {
-        setRecipes(data)
-        // console.log(recipes)
-        // console.log(data)
-      })
-      // .then(() => history.push(`/recipes/${query}`))
+      .then(data => setRecipes(data))
       .then(() => history.push(`/recipes/`))
 
       .catch(err => console.log('Something went wrong ' + err))
 
-      // history.push(`/recipes/${query}`)
     }
 
   const setSearch = (e) => {
