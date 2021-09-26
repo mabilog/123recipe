@@ -1,3 +1,15 @@
+Recipe Project
+
+Learning Objectives:
+React
+React Hooks and State management
+Local Storage
+API calling
+Basic HTML SCSS and Javascript
+
+Stretch
+
+
 Shows recipes that use provided query words from the search bar
 
 Add recipes to Recipe List
