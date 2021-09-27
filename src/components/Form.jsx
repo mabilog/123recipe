@@ -25,7 +25,7 @@ const Form = ({ setRecipes, recipes, query, setQuery }) => {
   }
   return (
      <FormWrapper onSubmit={getRecipe}>
-       <input type="text" name="recipeName" onChange={setSearch}/>
+       <input type="text" name="recipeName" onChange={setSearch} placeholder="Search Ingredients"/>
        <SearchIcon className="searchIcon"/>
      </FormWrapper>
 

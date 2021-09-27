@@ -16,8 +16,8 @@ const Favorites = ({
         return (
           <FavoriteCard>
               <h3>{favorite.title}</h3>
-              <button onClick={() => removeFavorite(favorite)}>Remove from Favorite</button>
               <img src={favorite.image} alt={favorite.title}/>
+              <button onClick={() => removeFavorite(favorite)}>Remove from Favorite</button>
               <Link to={{ pathname: `/recipe/${favorite.id}`}} onClick={setRecipeId(favorite.id)}>View</Link>
           </FavoriteCard>
           )
@@ -30,29 +30,48 @@ const Favorites = ({
 
 const FavoriteWrapper = styled.div`
   position: relative;
+  margin: auto;
+  font-family: sans-serif;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: aliceblue;
+  flex-flow: row wrap;
+  max-width: 1000px;
   width: 100%;
-  height: 100vh;
   
+  @media screen and (max-width: 780px){
+    flex-direction: column;
+  }
 `;
 
 const FavoriteCard = styled.div`
+  margin: 0 auto;
+  width: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 250px;
-  height: 250px;
-
+  justify-content: center;
+  padding: 20px;
   h3{
-    font-size: 16px;
-    
+    margin: 10px;
   }
+
   img{
-    height: 150px;
-    width: 150px;
+    width: 100%;
+  }
+
+  span{
+    display: flex;
+    justify-content: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 1rem 0;
+    position: relative;
+    bottom: 20px;
+    background-color: grey;
+    color: white;
+    font-family: sans-serif;
+    width: 100%;
+    padding: 10px;
+    cursor: pointer;
   }
 `;
 

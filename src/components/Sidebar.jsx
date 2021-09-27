@@ -39,7 +39,7 @@ const Sidebar = ({ recipes, setRecipes, query, setQuery}) => {
         <li>
           <SideLink to={'/saved'}>
             <FavoriteBorderIcon/>
-            <span>Saved</span>
+            <span>Favorites</span>
           </SideLink>
         </li>
       </NavList>
@@ -62,7 +62,7 @@ const Sidebar = ({ recipes, setRecipes, query, setQuery}) => {
 const SidebarWrapper = styled.div`
   position: fixed;
   height: 100%;
-  width: 240px;
+  width: 280px;
   background: #11101d;
   padding: 6px 14px;
   /* color: white; */
